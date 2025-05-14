@@ -131,7 +131,7 @@ If you prefer a **lightweight**, open-source, web-based GUI (instead of Compass)
 To install and run:
 
 ```bash
-npm install -g mongoku
+sudo npm install -g mongoku
 mongoku
 ```
 
