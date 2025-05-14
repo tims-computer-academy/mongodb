@@ -59,14 +59,7 @@ In your terminal, run the following:
 mongofiles --db personal_archive put /full/path/to/your/document.pdf
 ```
 
-### Replace:
-
-* `/full/path/to/your/document.pdf` → with a real file on your system
-  For example:
-
-```bash
-mongofiles --db personal_archive put ~/Documents/test.pdf
-```
+(Replace `/full/path/to/your/document.pdf` with a real file on your system.)
 
 This uploads the file into MongoDB under the `fs.files` and `fs.chunks` collections.
 
