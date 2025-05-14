@@ -76,11 +76,7 @@ mongosh
 
 This should give you a working interactive shell connected to your local MongoDB server.
 
-After the shell has started properly, you can close it again for the time being:
-
-```bash
-exit
-```
+After the shell has started properly, you can close it again for the time being with `Ctrl+D` or `exit`.
 
 ---
 
