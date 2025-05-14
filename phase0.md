@@ -111,4 +111,4 @@ sudo systemctl restart mongod
 
 ## Next Step
 
-🚀 [Continue with Phase 1](https://github.com/tims-computer-academy/path_adv_mongodb/blob/main/phase1.md)
+🚀 [Phase 1](https://github.com/tims-computer-academy/path_adv_mongodb/blob/main/phase1.md)
