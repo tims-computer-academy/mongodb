@@ -226,4 +226,4 @@ With this phase complete, your MongoDB server is now **ready for secure remote a
 
 ## Next Step
 
-🚀 [Extra Mile](https://github.com/tims-computer-academy/mongodb/blob/main/extra_mile.md)
+🚀 [Capstone](https://github.com/tims-computer-academy/mongodb/blob/main/capstone.md)
