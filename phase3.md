@@ -20,7 +20,7 @@ Download Compass from the official MongoDB website:
 Choose the “Community” edition (free) and install it like any other desktop app. In Ubuntu, e.g.:
 
 ```bash
-sudo apt install ./<path_to_file>.deb
+sudo apt install <path_to_file>.deb
 ```
 
 Then launch Compass.
