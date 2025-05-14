@@ -77,6 +77,6 @@
 * Files and backups will be **encrypted**
 * Only **open-source, offline tools** will be used
 
-### I’ll walk you through each step. Let's begin!
+### Next Step
 
-[Start with Phase 0]
+🚀 [Start with Phase 0]
