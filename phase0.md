@@ -1,74 +1,27 @@
 ## Phase 0: Install MongoDB (Community Edition) via `apt`
 
-### Step 1: Import the MongoDB public GPG key
+💡 The examples in this learning path are tested on Ubuntu 24.10 oracular. Where necessary, I make references to differences to other distributions and try to provide links to further resources.
 
+### Step 1: Install GNU Privacy Guard & Import the MongoDB public GPG key
+
+Install GNU Privacy Guard:
 ```bash
-curl -fsSL https://pgp.mongodb.com/server-7.0.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg --dearmor
+sudo apt install -y wget gnupg
 ```
 
----
+Add MongoDB's GPG key
+```bash
+wget -qO - https://www.mongodb.org/static/pgp/server-7.0.asc | sudo gpg --dearmor -o /usr/share/keyrings/mongodb-archive-keyring.gpg
+```
 
 ### Step 2: Create the MongoDB source list file
 
-Replace `bookworm` with your distro codename if needed (e.g., `bullseye`, `buster`):
-
-```bash
-echo "deb [signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg] https://repo.mongodb.org/apt/debian bookworm/mongodb-org/7.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+Add the correct repository entry (e.g., in Ubuntu):
+```
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/mongodb-archive-keyring.gpg] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
 ```
 
-If you're not sure which codename your system uses, run:
-
-```bash
-lsb_release -a
-# or
-cat /etc/os-release
-```
-
-Here’s a list of popular Debian-based distros and their current (or most relevant) release codenames, which you’d use in an APT repo string like our MongoDB example.
-
-**Debian**
-
-| Version | Codename   |
-| ------- | ---------- |
-| 12      | `bookworm` |
-| 11      | `bullseye` |
-| 10      | `buster`   |
-
-**Ubuntu**
-
-| Version   | Codename   |
-| --------- | ---------- |
-| 24.04 LTS | `noble`    |
-| 22.04 LTS | `jammy`    |
-| 20.04 LTS | `focal`    |
-
-🛑 Ubuntu users should use `https://repo.mongodb.org/apt/ubuntu` instead, with codename:
-
-```
-jammy/mongodb-org/7.0
-```
-
-🛑 MongoDB only supports Ubuntu LTS releases officially for APT repositories. As of now (May 2025), MongoDB does not provide official .deb packages for non-LTS versions like oracular. You can force it by using the jammy multiverse repo on 24.10, like this:
-
-```bash
-echo "deb [signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.multiverse
-```
-
-But be warned: You may run into incompatibilities with newer libraries (GLIBC, systemd, libssl, etc.). This setup is not supported by MongoDB Inc. It may work or it may break subtly. Test thoroughly before deploying.
-
-**Linux Mint**
-
-| Version | Codename                    |
-| ------- | --------------------------- |
-| 21.x    | `vanessa`, `victoria`, etc. |
-| 20.x    | `ulyssa`, `ulyana`, etc.    |
-
-Mint uses Ubuntu repos under the hood, so follow the Ubuntu mapping.
-
-**Others**
-
-* **Kali Linux**: Based on **Debian Testing** → Use `bookworm` or upcoming `trixie`
-* **Raspberry Pi OS**: Based on **Debian** → `bullseye` or `bookworm`
+For other Linux distribution, please see the instructions here: https://www.mongodb.com/docs/manual/administration/install-on-linux/
 
 ### Step 3: Update your package database
 
