@@ -122,4 +122,4 @@ db.fs.files.updateOne(
 
 ## Next Step
 
-🚀 [Continue with Phase 2]
+🚀 [Phase 2]
