@@ -90,6 +90,9 @@ db.file_metadata.insertMany([
 
 This will add both documents in a single command.
 
+> `new Date("2025-01-10")` sets a **specific, fixed date**, stored as `ISODate("2025-01-10T00:00:00Z")`.
+`new Date()` sets the **current date and time**, e.g., `ISODate("2025-05-14T14:09:05.887Z")`, based on when the command runs.
+
 ---
 
 ## Step 2: Find and Filter Documents
@@ -124,7 +127,7 @@ Find documents that have the tag "intel":
 db.file_metadata.find({ tags: "intel" }).pretty()
 ```
 
-> MongoDB automatically matches array values when you provide a single value (like `"intel"`).
+> If a field contains an **array of values**, and you search for **just one of those values**, MongoDB will automatically match the document if any array item matches.
 
 ---
 
