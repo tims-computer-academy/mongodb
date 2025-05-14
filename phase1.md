@@ -223,11 +223,13 @@ You can add extra information (metadata) to a file stored in GridFS. This is use
 
 You now know how to:
 
-* Start a new MongoDB database (`personal_archive`)
-* Use `mongofiles` to upload binary files (like PDFs) into GridFS
-* Inspect uploaded files and their chunks
-* Download a stored file from the database back to disk
-* Add custom metadata to describe your files
+✅ Start a new MongoDB database (`personal_archive`)<br>
+✅ Use `mongofiles` to upload binary files (like PDFs) into GridFS<br>
+✅ Inspect uploaded files and their chunks<br>
+✅ Download a stored file from the database back to disk<br>
+✅ Add custom metadata to describe your files<br>
+
+This prepares you to store, organize, and retrieve large or small files inside MongoDB — and sets the foundation for working with structured metadata in the next phases.
 
 ## Next Step
 
