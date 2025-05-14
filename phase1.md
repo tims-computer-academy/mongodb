@@ -1,74 +1,98 @@
 # Phase 1: Store & Retrieve Files with GridFS
 
-This phase focuses on uploading, downloading, and managing files (like PDFs, images, or videos) in MongoDB using GridFS, which is built for handling large binary files.
-
-## What is GridFS?
-
-GridFS is MongoDB’s **file storage specification**. It breaks large files into chunks and stores them in two collections:
-
-* `fs.files`: metadata (filename, upload date, size, etc.)
-* `fs.chunks`: actual binary file content
-
-Files over 16MB are automatically split into chunks. But even small files like PDFs can be stored using GridFS for unified file+metadata handling.
+This phase teaches you how to use MongoDB’s **GridFS** to store and retrieve binary files like PDFs, images, or videos.
 
 ---
 
-## Step 1: Create a test database
+## 💡 What Is GridFS?
 
-Let’s create a dedicated database for personal archive use.
+GridFS stores files by breaking them into chunks:
+
+| Collection  | Description                      |
+| ----------- | -------------------------------- |
+| `fs.files`  | File metadata (name, size, date) |
+| `fs.chunks` | The binary file chunks           |
+
+Files larger than 16MB are automatically split. But even small files can be stored to unify file + metadata.
+
+---
+
+## Step 1: Create the Database
+
+In your terminal, run:
 
 ```bash
 mongosh
 ```
 
-In the shell:
+Inside the shell, switch to your project DB:
 
 ```js
 use personal_archive
 ```
 
-(Optional but good practice: confirm your current DB)
+Confirm the current database:
 
 ```js
 db
 ```
 
+Output should be:
+
+```
+personal_archive
+```
+
 ---
 
-## Step 2: Upload a PDF using `mongofiles`
+## Step 2: Upload a File Using `mongofiles`
 
-Exit the shell (`Ctrl+D` or `exit`) and run this in the terminal:
+Exit the shell first:
+
+```js
+exit
+```
+
+In your terminal, run the following:
 
 ```bash
 mongofiles --db personal_archive put /full/path/to/your/document.pdf
 ```
 
-Example:
+### Replace:
+
+* `/full/path/to/your/document.pdf` → **with a real file** on your system
+  For example:
 
 ```bash
 mongofiles --db personal_archive put ~/Documents/test.pdf
 ```
 
-This uploads the file to the `personal_archive` database, under default GridFS collections: `fs.files` and `fs.chunks`.
+This uploads the file into MongoDB under the `fs.files` and `fs.chunks` collections.
 
 ---
 
-## Step 3: Verify the upload in `mongosh`
+## Step 3: Verify Upload in `mongosh`
 
-Reconnect to your database:
+Reconnect to the shell:
 
 ```bash
 mongosh
+```
+
+Switch to your DB again:
+
+```js
 use personal_archive
 ```
 
-Check the `fs.files` collection:
+Now list the files stored:
 
 ```js
 db.fs.files.find().pretty()
 ```
 
-You should see an entry like:
+Output should look like this:
 
 ```json
 {
@@ -80,45 +104,75 @@ You should see an entry like:
 }
 ```
 
+You can also check how many chunks exist:
+
+```js
+db.fs.chunks.countDocuments()
+```
+
 ---
 
-## Step 4: Download the file back to disk
+## Step 4: Download the File Back to Disk
 
-In the terminal:
+Exit the shell again:
+
+```js
+exit
+```
+
+Now restore the file from DB to your local machine:
 
 ```bash
 mongofiles --db personal_archive get test.pdf
 ```
 
-It will save the file to your current directory.
+✅ The file will be saved to your current working directory.
 
 ---
 
-## Step 5: Add custom metadata (optional)
+## Step 5: Add Custom Metadata (Optional)
 
-GridFS allows you to embed metadata with each file. Example:
+Let’s attach metadata (e.g. category, source) to the uploaded file.
+
+1. Reconnect to the shell:
 
 ```bash
-mongofiles --db personal_archive put ~/Documents/test.pdf --type application/pdf
+mongosh
+use personal_archive
 ```
 
-Then update it via `mongosh`:
+2. Run this command to update the metadata:
 
 ```js
 db.fs.files.updateOne(
-  { filename: "test.pdf" },
-  { $set: { "metadata": { source: "personal", category: "OSINT", addedBy: "you" } } }
+  { filename: "test.pdf" },  // Replace with your real filename
+  {
+    $set: {
+      metadata: {
+        category: "osint",
+        source: "local upload",
+        reviewed: false,
+        addedAt: new Date()
+      }
+    }
+  }
 )
 ```
 
+The file now has searchable metadata inside the `metadata` field.
+
 ---
 
-## Summary of What You Now Know
+## Summary
 
-* Upload files to MongoDB using GridFS (`mongofiles`)
-* View metadata in `fs.files`, binary chunks in `fs.chunks`
-* Retrieve files from DB to disk
-* Add structured metadata to enhance searchability
+By completing this phase, you now know how to:
+
+* Upload binary files into MongoDB using `mongofiles`
+* View stored files (`fs.files`) and chunks (`fs.chunks`)
+* Download files from the database
+* Add custom metadata to enhance organization and search
+
+---
 
 ## Next Step
 
