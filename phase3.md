@@ -154,11 +154,11 @@ Mongoku is fast, minimal, and useful on remote servers if you want to expose a v
 
 ## Summary: What You Learned in Phase 3
 
-✅ Install and launch MongoDB Compass
-✅ Connect to your database using a GUI
-✅ Browse documents and GridFS files visually
-✅ Use the visual query builder for searching
-✅ Edit or insert documents manually
+✅ Install and launch MongoDB Compass<br>
+✅ Connect to your database using a GUI<br>
+✅ Browse documents and GridFS files visually<br>
+✅ Use the visual query builder for searching<br>
+✅ Edit or insert documents manually<br>
 ✅ Optionally try Mongoku (web-based GUI)
 
 This phase gives you a **hands-on interface** to manage your data — especially helpful when inspecting or cleaning up information.
