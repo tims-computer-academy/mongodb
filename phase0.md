@@ -4,7 +4,7 @@
 
 ---
 
-## Step 1: Install GNU Privacy Guard & import the MongoDB public GPG key
+## Step 1: Install GNU Privacy Guard and Import the MongoDB Public GPG Key
 
 Install GNU Privacy Guard:
 ```bash
@@ -17,7 +17,7 @@ Add MongoDB's GPG key
 wget -qO - https://www.mongodb.org/static/pgp/server-7.0.asc | sudo gpg --dearmor -o /usr/share/keyrings/mongodb-archive-keyring.gpg
 ```
 
-## Step 2: Create the MongoDB source list file
+## Step 2: Create the MongoDB Source List File
 
 Add the correct repository entry (e.g., in Ubuntu):
 ```
@@ -28,7 +28,7 @@ For other Linux distribution, please see the instructions here: https://www.mong
 
 ---
 
-## Step 3: Update your package database
+## Step 3: Update Your Package Database
 
 ```bash
 sudo apt update
@@ -51,7 +51,7 @@ This installs:
 
 ---
 
-## Step 5: Start MongoDB and enable it on boot
+## Step 5: Start MongoDB and Enable it on Boot
 
 ```bash
 sudo systemctl start mongod
@@ -80,7 +80,7 @@ After the shell has started properly, you can close it again for the time being 
 
 ---
 
-## Step 7: Lock MongoDB to localhost (security best practice)
+## Step 7: Lock MongoDB to Localhost (Security Best Practice)
 
 Open the MongoDB config file:
 
@@ -122,4 +122,4 @@ This prepares your system for safe local development and sets a clean, secure ba
 
 ## Next Step
 
-🚀 [Phase 1](https://github.com/tims-computer-academy/path_adv_mongodb/blob/main/phase1.md)
+🚀 [Phase 1](https://github.com/tims-computer-academy/mongodb/blob/main/phase1.md)
