@@ -21,7 +21,7 @@ Example document (metadata for a PDF file):
   description: "Annual OSINT report",
   tags: ["report", "osint", "2023"],
   reviewed: false,
-  addedAt: ISODate("2024-03-12T09:00:00Z")
+  addedAt: ISODate("2025-03-12T09:00:00Z")
 }
 ```
 
