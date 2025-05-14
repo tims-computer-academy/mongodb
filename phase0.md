@@ -96,4 +96,4 @@ sudo systemctl restart mongod
 
 ## Next Step
 
-🚀 [Start with Phase 0]
+🚀 [Continue with Phase 1]
