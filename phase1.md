@@ -1,11 +1,8 @@
-Excellent. Let's begin **Phase 1: Store & Retrieve Files with GridFS**.
-This phase focuses on **uploading, downloading, and managing files** (like PDFs) in MongoDB using **GridFS**, which is built for handling large binary files.
+# Phase 1: Store & Retrieve Files with GridFS
 
 ---
 
-## Phase 1: Store & Retrieve Files with GridFS
-
-### What is GridFS?
+## What is GridFS?
 
 GridFS is MongoDB’s **file storage specification**. It breaks large files into chunks and stores them in two collections:
 
@@ -123,6 +120,6 @@ db.fs.files.updateOne(
 * Retrieve files from DB to disk
 * Add structured metadata to enhance searchability
 
----
+## Next Step
 
-Let me know once you've successfully uploaded and retrieved a PDF, and I’ll guide you into **Phase 2: MongoDB CRUD & Querying Basics**, where we start building document-based data around your stored files.
+🚀 [Continue with Phase 2]
