@@ -25,9 +25,7 @@ Example document (metadata for a PDF file):
 }
 ```
 
-This document is stored in a collection you choose (e.g. `file_metadata`).
-
-> In **Phase 1**, you learned to upload files using GridFS (`mongofiles`). In **Phase 2**, we're only working with structured metadata in a regular MongoDB collection (`file_metadata`). There’s no connection to an actual file on disk or in GridFS unless you choose to link them later.
+This document is stored in a collection you choose (e.g. `file_metadata`). Unlike GridFS, we’re not storing the file itself here — only **structured info about the file**.
 
 ---
 
@@ -64,6 +62,8 @@ db.file_metadata.insertOne({
 * `db.file_metadata` refers to a collection called `file_metadata`.
 * `insertOne(...)` creates a new document (record) inside that collection.
 * You can add any fields you want: strings, arrays, booleans, dates, etc.
+
+> In **Phase 1**, you learned to upload files using GridFS (`mongofiles`). In **Phase 2**, we're only working with structured metadata in a regular MongoDB collection (`file_metadata`). There’s no connection to an actual file on disk or in GridFS unless you choose to link them later.
 
 > MongoDB collections are flexible — no need to define a schema up front.
 
