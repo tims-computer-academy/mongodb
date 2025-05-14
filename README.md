@@ -23,7 +23,7 @@
 | Configure default paths | Verify data (`/var/lib/mongodb`) and logs        | `mongod.conf`, `journalctl` |
 | Lock down local access  | Bind MongoDB to localhost only                   | `mongod.conf`               |
 
-## Phase 1: Store & Retrieve Files with GridFS (Your Use Case)
+## Phase 1: Store & Retrieve Files with GridFS (Use Case: Store a PDF file)
 
 | Topic           | Goal                                         | Tools                   |
 | --------------- | -------------------------------------------- | ----------------------- |
