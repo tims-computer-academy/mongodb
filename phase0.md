@@ -94,7 +94,7 @@ net:
 
 This ensures the server is only accessible from your own machine.
 
-Then restart MongoDB:
+If you had to make any changes, save & exit, then restart MongoDB:
 
 ```bash
 sudo systemctl restart mongod
