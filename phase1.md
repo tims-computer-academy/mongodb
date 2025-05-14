@@ -154,7 +154,13 @@ db.fs.files.updateOne(
 
 The file now has searchable metadata inside the `metadata` field.
 
-If you want to verify the update worked, you can check the document afterwards with: `db.fs.files.findOne({ filename: "test.pdf" })` (Replace `test.pdf` with your real filename.)
+If you want to verify the update worked, you can check the document afterwards with:
+
+```bash
+db.fs.files.findOne({ filename: "test.pdf" })
+```
+
+(Replace `test.pdf` with your real filename.)
 
 ---
 
