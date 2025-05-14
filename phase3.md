@@ -17,11 +17,12 @@ Download Compass from the official MongoDB website:
 
 **🔗 [https://www.mongodb.com/try/download/compass](https://www.mongodb.com/try/download/compass)**
 
-Choose the “Community” edition (free) and install it like any other desktop app; if necessary, change the file's permissions so _apt can access it. In Ubuntu, e.g.:
+Choose the “Community” edition (free) and install it like any other desktop app; if necessary, change the file's permissions and install it again so _apt can access it. In Ubuntu, e.g.:
 
 ```bash
-sudo chmod 644 ./mongodb-compass_1.46.2_amd64.deb
 sudo apt install ./mongodb-compass_1.46.2_amd64.deb
+sudo chmod 644 ./mongodb-compass_1.46.2_amd64.deb // If necessary
+sudo apt install ./mongodb-compass_1.46.2_amd64.deb // If necessary
 ```
 
 Then launch Compass: `mongodb-compass`
