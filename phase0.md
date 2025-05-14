@@ -1,6 +1,6 @@
 # Phase 0: Install MongoDB (Community Edition) via `apt`
 
-💡 The examples in this learning path are tested on Ubuntu 24.10 oracular. Where necessary, I make references to differences to other distributions and try to provide links to further resources.
+💡 The examples in this learning path are using Ubuntu 24.10 oracular. Where necessary, I make references to differences to other distributions and try to provide links to further resources.
 
 ---
 
