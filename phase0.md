@@ -69,6 +69,12 @@ mongosh
 
 This should give you a working interactive shell connected to your local MongoDB server.
 
+After the shell has started properly, you can close it again for the time being:
+
+```bash
+exit
+```
+
 ---
 
 ## Step 7: Lock MongoDB to localhost (security best practice)
