@@ -2,7 +2,7 @@
 
 💡 The examples in this learning path are tested on Ubuntu 24.10 oracular. Where necessary, I make references to differences to other distributions and try to provide links to further resources.
 
-### Step 1: Install GNU Privacy Guard & Import the MongoDB public GPG key
+### Step 1: Install GNU Privacy Guard & import the MongoDB public GPG key
 
 Install GNU Privacy Guard:
 ```bash
