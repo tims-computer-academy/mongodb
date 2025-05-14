@@ -91,7 +91,9 @@ Now authentication is required for any operation.
 
 ## Step 2: Connect with Login Credentials
 
-Try opening the MongoDB shell again:
+### In the MongoDB Shell
+
+Open the MongoDB shell again:
 
 ```bash
 mongosh
@@ -113,6 +115,22 @@ mongosh -u localadmin -p --authenticationDatabase admin
 ```
 
 (MongoDB will prompt you for the password.)
+
+### In MongoDB Compass
+
+Open MongoDB Compass.
+
+On the left pane, click on the three dots next to your respective database. Select **Edit Connection** -> **Advanced Connection Options** -> **Authentication**. Choose **Username/Password** and enter:
+
+* Username: your user name
+* Password: your password
+* Authentication: admin
+
+Click on: **Save & Connect**.
+
+From now on, when you open MongoDB Compass and connect to your database, the system will login with your credentials.
+
+To strengthen security, you can go to **Edit** -> **Settings** and enable **Protect Connection String Secrets**. This will hide the credentials in connection strings from users.
 
 ---
 
