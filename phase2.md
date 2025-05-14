@@ -170,10 +170,10 @@ db.file_metadata.deleteMany({ reviewed: false })
 
 By completing this phase, you should now be comfortable with the following operations in MongoDB:
 
-* **Inserting and updating documents** using `insertOne()`, `insertMany()`, `updateOne()`, and `updateMany()`.
-* **Querying documents** using basic filters, operators (`$in`, `$gt`, etc.), and sorting.
-* **Projecting specific fields** and excluding others in query results.
-* **Deleting documents** using `deleteOne()` and `deleteMany()`.
+* Inserting and updating documents using `insertOne()`, `insertMany()`, `updateOne()`, and `updateMany()`.
+* Querying documents using basic filters, operators (`$in`, `$gt`, etc.), and sorting.
+* Projecting specific fields and excluding others in query results.
+* Deleting documents using `deleteOne()` and `deleteMany()`.
 
 ---
 
