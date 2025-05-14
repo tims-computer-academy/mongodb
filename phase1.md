@@ -25,7 +25,7 @@ In your terminal, run:
 mongosh
 ```
 
-Inside the shell, switch to your project DB:
+Inside the shell, create a database named `personal_archive` with the following command (later you can create databases with other names):
 
 ```bash
 use personal_archive
