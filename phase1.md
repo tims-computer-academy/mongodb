@@ -61,7 +61,7 @@ mongofiles --db personal_archive put /full/path/to/your/document.pdf
 
 ### Replace:
 
-* `/full/path/to/your/document.pdf` → **with a real file** on your system
+* `/full/path/to/your/document.pdf` → with a real file on your system
   For example:
 
 ```bash
