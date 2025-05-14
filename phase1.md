@@ -19,6 +19,38 @@ When you use GridFS, MongoDB creates two special collections inside your databas
 
 Even small files can be stored this way, so your app can treat all files the same.
 
+Below is a simple **visual diagram of GridFS**. It shows how a file flows through GridFS: how it's split into chunks and how metadata and data are stored in two linked collections.
+
+```mermaid
+graph TD
+    A[Original File] --> B(Split into Chunks)
+    B --> C{GridFS Storage}
+    C --> D[fs.chunks Collection]
+    C --> E[fs.files Collection]
+    
+    D -->|Stores binary chunks| F[Chunk Document Structure]
+    F --> G["{
+        _id: ObjectId,
+        files_id: ObjectId,
+        n: Integer,
+        data: BinData
+    }"]
+    
+    E -->|Stores metadata| H["{
+        _id: ObjectId,
+        filename: String,
+        length: Number,
+        chunkSize: Number,
+        uploadDate: Date,
+        metadata: Object,
+        md5: String
+    }"]
+    
+    style A fill:#d4f1f9,stroke:#333
+    style D fill:#ffdddd,stroke:#333
+    style E fill:#ddffdd,stroke:#333
+```
+
 ---
 
 ## Step 1: Create a New Database
