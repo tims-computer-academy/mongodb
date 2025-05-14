@@ -2,12 +2,15 @@
 
 💡 The examples in this learning path are tested on Ubuntu 24.10 oracular. Where necessary, I make references to differences to other distributions and try to provide links to further resources.
 
+---
+
 ## Step 1: Install GNU Privacy Guard & import the MongoDB public GPG key
 
 Install GNU Privacy Guard:
 ```bash
 sudo apt install -y wget gnupg
 ```
+---
 
 Add MongoDB's GPG key
 ```bash
@@ -23,11 +26,15 @@ echo "deb [arch=amd64 signed-by=/usr/share/keyrings/mongodb-archive-keyring.gpg]
 
 For other Linux distribution, please see the instructions here: https://www.mongodb.com/docs/manual/administration/install-on-linux/
 
+---
+
 ## Step 3: Update your package database
 
 ```bash
 sudo apt update
 ```
+
+---
 
 ## Step 4: Install MongoDB
 
@@ -99,6 +106,8 @@ If you had to make any changes, save & exit, then restart MongoDB:
 ```bash
 sudo systemctl restart mongod
 ```
+
+---
 
 ## Next Step
 
