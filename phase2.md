@@ -1,16 +1,55 @@
-# Phase 2: MongoDB CRUD & Querying Basics
-
-This phase introduces how to manipulate and query data in MongoDB. You'll learn how to **c**reate (store), **r**etrieve, **u**pdate, and **d**elete documents in the database (**CRUD**). You'll also learn how to filter results, project specific fields, and sort data.
+Here is **Phase 2**, written in the same detailed and beginner-friendly style as your approved *Phase 1*:
 
 ---
 
-## Step 1: Insert & Update Documents
+# Phase 2: MongoDB CRUD & Querying Basics
 
-### Insert a Document
+This phase teaches you how to **store structured information** (like text data, metadata, tags, dates) in MongoDB and how to search, filter, and modify it.
 
-You can store data (e.g., metadata) in MongoDB using `insertOne()` for one document or `insertMany()` for multiple documents.
+You'll learn the basics of **CRUD**:
+**C**reate, **R**ead, **U**pdate, **D**elete — the fundamental operations in any database.
 
-For example, if you want to insert a new document to store metadata for a file:
+We’ll use a new collection in your `personal_archive` database to store **metadata documents** — think of these as text-based records to describe files, research notes, or anything else.
+
+---
+
+## What Is a "Document" in MongoDB?
+
+In MongoDB, a **document** is a **JSON-like data record**. It's stored inside a **collection**, which is like a folder for related documents.
+
+Example document (metadata for a PDF file):
+
+```js
+{
+  filename: "report_2023.pdf",
+  description: "Annual OSINT report",
+  tags: ["report", "osint", "2023"],
+  reviewed: false,
+  addedAt: ISODate("2024-03-12T09:00:00Z")
+}
+```
+
+This document is stored in a collection you choose (e.g. `file_metadata`). Unlike GridFS, we’re not storing the file itself here — only **structured info about the file**.
+
+---
+
+## Step 1: Insert Documents
+
+### Insert a Single Document
+
+Start the MongoDB shell if it’s not already running:
+
+```bash
+mongosh
+```
+
+Switch to your archive database:
+
+```js
+use personal_archive
+```
+
+Now insert a document into a new collection called `file_metadata`:
 
 ```js
 db.file_metadata.insertOne({
@@ -22,158 +61,206 @@ db.file_metadata.insertOne({
 })
 ```
 
-* **Explanation**:
+**What this does:**
 
-  * `insertOne()` adds a single document into the `file_metadata` collection.
-  * Each field (like `filename`, `description`, etc.) corresponds to a key-value pair in the document.
+* `db.file_metadata` refers to a collection called `file_metadata`.
+* `insertOne(...)` creates a new document (record) inside that collection.
+* You can add any fields you want: strings, arrays, booleans, dates, etc.
 
-If you want to insert multiple documents, you can do:
+> MongoDB collections are flexible — no need to define a schema up front.
+
+### Insert Many Documents at Once
+
+You can insert multiple documents using `insertMany()`:
 
 ```js
 db.file_metadata.insertMany([
-  { filename: "file1.pdf", description: "File 1", tags: ["pdf"], addedAt: new Date(), reviewed: false },
-  { filename: "file2.pdf", description: "File 2", tags: ["pdf", "archive"], addedAt: new Date(), reviewed: true }
+  {
+    filename: "intelligence_briefing.pdf",
+    tags: ["briefing", "intel"],
+    reviewed: true,
+    addedAt: new Date("2024-01-10")
+  },
+  {
+    filename: "field_notes.txt",
+    tags: ["notes", "text"],
+    reviewed: false,
+    addedAt: new Date("2024-01-12")
+  }
 ])
 ```
 
-### Update a Document
+This will add both documents in a single command.
 
-To update an existing document, you use `updateOne()` or `updateMany()`.
+---
 
-For example, to mark a file as reviewed in your metadata:
+## Step 2: Find and Filter Documents
+
+### Show All Documents
+
+To list everything in the `file_metadata` collection:
 
 ```js
-db.file_metadata.updateOne(
-  { filename: "another_test.pdf" },  // Query condition (search for document with this filename)
-  { $set: { reviewed: true } }        // Update action (set 'reviewed' field to true)
-)
+db.file_metadata.find().pretty()
 ```
 
-* **Explanation**:
+Use `.pretty()` to make the output easier to read.
 
-  * `updateOne()` will update the first document that matches the condition (`filename: "another_test.pdf"`).
-  * `$set` tells MongoDB to update or add a field (`reviewed: true`).
+### Find with a Filter
 
-If you want to update multiple documents at once, use `updateMany()`:
+Find a single document where the filename is `"another_test.pdf"`:
 
 ```js
-db.file_metadata.updateMany(
-  { reviewed: false },                // Condition (find all documents where 'reviewed' is false)
-  { $set: { reviewed: true } }         // Update action (set 'reviewed' to true for all matching docs)
-)
+db.file_metadata.findOne({ filename: "another_test.pdf" })
+```
+
+Find documents that are not reviewed yet:
+
+```js
+db.file_metadata.find({ reviewed: false }).pretty()
+```
+
+Find documents that have the tag "intel":
+
+```js
+db.file_metadata.find({ tags: "intel" }).pretty()
+```
+
+> MongoDB automatically matches array values when you provide a single value (like `"intel"`).
+
+---
+
+## Step 3: Use Advanced Queries
+
+### Match Documents with Operators
+
+Find files added **after a certain date**:
+
+```js
+db.file_metadata.find({
+  addedAt: { $gt: new Date("2024-01-01") }
+}).pretty()
+```
+
+* `$gt` = "greater than"
+* Other operators include `$lt` (less than), `$eq` (equal), `$ne` (not equal), `$in` (in array)
+
+Example: Find files tagged with either `"intel"` or `"osint"`:
+
+```js
+db.file_metadata.find({
+  tags: { $in: ["intel", "osint"] }
+}).pretty()
 ```
 
 ---
 
-## Step 2: Query Documents with Filters
+## Step 4: Return Only Selected Fields (Projection)
 
-You can find documents using `find()`, which accepts optional filters.
+Sometimes you only want to return specific fields (not the entire document).
 
-### Basic Querying
-
-For example, to find all documents where `reviewed` is `true`:
+Example: Show only filenames and tags:
 
 ```js
-db.file_metadata.find({ reviewed: true }).pretty()
+db.file_metadata.find(
+  {},
+  { filename: 1, tags: 1, _id: 0 }
+)
 ```
 
-* **Explanation**:
+Explanation:
 
-  * `find()` retrieves all documents that match the given filter.
-  * `.pretty()` formats the result to be more readable.
-
-### Using Operators
-
-MongoDB supports operators to perform more advanced queries.
-
-For example, to find documents where `tags` contain `"pdf"` and `reviewed` is `false`, use `$in`:
-
-```js
-db.file_metadata.find({ tags: { $in: ["pdf"] }, reviewed: false }).pretty()
-```
-
-* **Explanation**:
-
-  * `$in` finds documents where the `tags` array contains `"pdf"`.
-  * `reviewed: false` ensures only documents with `reviewed` set to `false` are returned.
-
-You can use other operators like `$gt`, `$lt`, `$ne`, etc.
+* `{}` means "no filter" — return all documents
+* `{ filename: 1, tags: 1 }` selects those fields
+* `_id: 0` hides the default `_id` field (shown unless explicitly hidden)
 
 ---
 
-## Step 3: Projection & Sorting
+## Step 5: Sort Results
 
-### Projection: Return Specific Fields
+You can sort documents using `.sort()`.
 
-To only return specific fields (e.g., `filename` and `tags`), you use a projection.
-
-```js
-db.file_metadata.find({}, { filename: 1, tags: 1 }).pretty()
-```
-
-* **Explanation**:
-
-  * The first `{}` is the filter (an empty filter means return all documents).
-  * The second `{ filename: 1, tags: 1 }` specifies which fields to include (1 means include, 0 means exclude).
-
-If you wanted to exclude the `description` field, you could use:
-
-```js
-db.file_metadata.find({}, { description: 0 }).pretty()
-```
-
-This will return all fields except `description`.
-
-### Sorting Results
-
-To sort the results by `addedAt` in descending order:
+Example: Sort files by date (most recent first):
 
 ```js
 db.file_metadata.find().sort({ addedAt: -1 }).pretty()
 ```
 
-* **Explanation**:
+* `1` = ascending (oldest first)
+* `-1` = descending (newest first)
 
-  * `.sort({ addedAt: -1 })` sorts the results by `addedAt` in descending order (`1` for ascending, `-1` for descending).
-
----
-
-## Step 4: Delete Documents
-
-### Delete a Single Document
-
-To delete a single document, use `deleteOne()`:
-
-```js
-db.file_metadata.deleteOne({ filename: "another_test.pdf" })
-```
-
-* **Explanation**:
-
-  * This deletes the first document that matches the given filter (`filename: "another_test.pdf"`).
-
-### Delete Multiple Documents
-
-To delete multiple documents at once, use `deleteMany()`:
-
-```js
-db.file_metadata.deleteMany({ reviewed: false })
-```
-
-* **Explanation**:
-
-  * This deletes all documents where the `reviewed` field is `false`.
+You can also sort by multiple fields if needed.
 
 ---
 
-## Summary
+## Step 6: Update Documents
 
-By completing this phase, you should now be comfortable with the following operations in MongoDB:
+### Update One Document
 
-* Inserting and updating documents using `insertOne()`, `insertMany()`, `updateOne()`, and `updateMany()`.
-* Querying documents using basic filters, operators (`$in`, `$gt`, etc.), and sorting.
-* Projecting specific fields and excluding others in query results.
-* Deleting documents using `deleteOne()` and `deleteMany()`.
+Mark a file as reviewed:
+
+```js
+db.file_metadata.updateOne(
+  { filename: "another_test.pdf" },
+  { $set: { reviewed: true } }
+)
+```
+
+### Update Multiple Documents
+
+Mark all unreviewed files as reviewed:
+
+```js
+db.file_metadata.updateMany(
+  { reviewed: false },
+  { $set: { reviewed: true } }
+)
+```
+
+You can also add new fields at any time:
+
+```js
+db.file_metadata.updateOne(
+  { filename: "field_notes.txt" },
+  { $set: { category: "raw text" } }
+)
+```
+
+MongoDB doesn’t require a predefined structure — you can add fields as needed.
+
+---
+
+## Step 7: Delete Documents
+
+### Delete One Document
+
+Remove a document by filename:
+
+```js
+db.file_metadata.deleteOne({ filename: "field_notes.txt" })
+```
+
+### Delete Many Documents
+
+Remove all documents with a certain tag:
+
+```js
+db.file_metadata.deleteMany({ tags: "test" })
+```
+
+---
+
+## Summary: What You Learned in Phase 2
+
+You now know how to:
+
+✅ Insert one or many structured documents into a MongoDB collection
+✅ Search documents with filters and operators
+✅ Return specific fields and sort the results
+✅ Update documents with `$set`
+✅ Delete documents when they’re no longer needed
+
+This skillset is essential for working with **structured information** in MongoDB — metadata, notes, logs, records, and more.
 
 ---
 
