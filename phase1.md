@@ -27,13 +27,13 @@ mongosh
 
 Inside the shell, switch to your project DB:
 
-```js
+```bash
 use personal_archive
 ```
 
 Confirm the current database:
 
-```js
+```bash
 db
 ```
 
@@ -49,7 +49,7 @@ personal_archive
 
 Exit the shell first:
 
-```js
+```bash
 exit
 ```
 
@@ -82,13 +82,13 @@ mongosh
 
 Switch to your DB again:
 
-```js
+```bash
 use personal_archive
 ```
 
 Now list the files stored:
 
-```js
+```bash
 db.fs.files.find().pretty()
 ```
 
@@ -106,7 +106,7 @@ Output should look like this:
 
 You can also check how many chunks exist:
 
-```js
+```bash
 db.fs.chunks.countDocuments()
 ```
 
@@ -116,7 +116,7 @@ db.fs.chunks.countDocuments()
 
 Exit the shell again:
 
-```js
+```bash
 exit
 ```
 
@@ -126,7 +126,7 @@ Now restore the file from DB to your local machine:
 mongofiles --db personal_archive get test.pdf
 ```
 
-✅ The file will be saved to your current working directory.
+The file will be saved to your current working directory.
 
 ---
 
@@ -143,7 +143,7 @@ use personal_archive
 
 2. Run this command to update the metadata:
 
-```js
+```bash
 db.fs.files.updateOne(
   { filename: "test.pdf" },  // Replace with your real filename
   {
