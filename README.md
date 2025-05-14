@@ -83,4 +83,4 @@
 
 ## Next Step
 
-🚀 [Start with Phase 0]
+🚀 [Start with Phase 0](https://github.com/tims-computer-academy/path_adv_mongodb/blob/main/phase0.md)
