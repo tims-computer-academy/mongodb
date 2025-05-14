@@ -17,7 +17,7 @@ Example document (metadata for a PDF file):
 
 ```js
 {
-  filename: "report_2023.pdf",
+  filename: "report_2024.pdf",
   description: "Annual OSINT report",
   tags: ["report", "osint", "2023"],
   reviewed: false,
