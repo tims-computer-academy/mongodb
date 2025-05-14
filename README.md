@@ -23,7 +23,7 @@
 | Configure default paths | Verify data (`/var/lib/mongodb`) and logs        | `mongod.conf`, `journalctl` |
 | Lock down local access  | Bind MongoDB to localhost only                   | `mongod.conf`               |
 
-## Phase 1: Store & Retrieve Files with GridFS (Use Case: Store a PDF file)
+## Phase 1: Store & Retrieve Files with GridFS
 
 | Topic           | Goal                                         | Tools                   |
 | --------------- | -------------------------------------------- | ----------------------- |
@@ -60,7 +60,7 @@
 | Encrypted backups     | Keep data and files safe                    | `mongodump`, GPG or OpenSSL     |
 | Logging & audit trail | Track who did what in the DB                | MongoDB logs, optional auditing |
 
-## Phase 5: Remote Access & Self-Hosting (Future Goal)
+## Phase 5: Remote Access & Self-Hosting
 
 | Topic                      | Goal                                      | Tools                               |
 | -------------------------- | ----------------------------------------- | ----------------------------------- |
