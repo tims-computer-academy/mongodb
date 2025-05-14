@@ -24,7 +24,7 @@ sudo chmod 644 ./mongodb-compass_1.46.2_amd64.deb
 sudo apt install ./mongodb-compass_1.46.2_amd64.deb
 ```
 
-Then launch Compass.
+Then launch Compass: `mongodb-compass`
 
 ---
 
