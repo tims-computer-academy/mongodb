@@ -114,14 +114,15 @@ You don’t want to use the `admin` user for everyday work. Let’s create a lim
 
 ### Create a Read/Write User for Your Archive
 
-In the shell, after logging in as admin:
+In the shell, after logging in as admin, swith to the database where the new user shall be added to, e.g.: `use personal_archive`
+
+Then create the new user with the following command:
 
 ```js
-use personal_archive
 db.createUser({
-  user: "archive_user",
-  pwd: "another_strong_password",
-  roles: [ { role: "readWrite", db: "personal_archive" } ]
+  user: "archive_user", # Enter user name hier
+  pwd: "another_strong_password", #Enter password here
+  roles: [ { role: "readWrite", db: "personal_archive" } ] # Replace the name of your database
 })
 ```
 
