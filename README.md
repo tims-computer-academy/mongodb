@@ -70,6 +70,8 @@
 | Fail2Ban & firewall tuning | Prevent brute-force & unauthorized access | `fail2ban`, `ufw`                   |
 | Monitoring usage           | Check DB health, performance, backups     | `mongotop`, `mongostat`, shell logs |
 
+---
+
 ## Security Principles Throughout
 
 * MongoDB will be **auth-protected** before any external access
@@ -77,6 +79,8 @@
 * Files and backups will be **encrypted**
 * Only **open-source, offline tools** will be used
 
-### Next Step
+---
+
+## Next Step
 
 🚀 [Start with Phase 0]
