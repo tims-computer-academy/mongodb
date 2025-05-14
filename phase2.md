@@ -77,13 +77,13 @@ db.file_metadata.insertMany([
     filename: "intelligence_briefing.pdf",
     tags: ["briefing", "intel"],
     reviewed: true,
-    addedAt: new Date("2024-01-10")
+    addedAt: new Date("2025-01-10")
   },
   {
     filename: "field_notes.txt",
     tags: ["notes", "text"],
     reviewed: false,
-    addedAt: new Date("2024-01-12")
+    addedAt: new Date("2025-01-12")
   }
 ])
 ```
