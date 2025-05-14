@@ -42,6 +42,14 @@ db.createUser({
 
 This user can create other users and manage access across all databases.
 
+If you want this (or another) user to have root/superuser rights, i.e. full admin access, you can provide this with:
+
+```js
+db.grantRolesToUser("localadmin", [
+  { role: "root", db: "admin" }
+])
+```
+
 You can now exit `mongosh`:
 
 ```js
