@@ -1,6 +1,6 @@
 # Phase 2: MongoDB CRUD & Querying Basics
 
-This phase introduces how to manipulate and query data in MongoDB. You'll learn how to store, retrieve, update, and delete documents in the database. You'll also learn how to filter results, project specific fields, and sort data.
+This phase introduces how to manipulate and query data in MongoDB. You'll learn how to **c**reate (store), **r**etrieve, **u**pdate, and **d**elete documents in the database (**CRUD**). You'll also learn how to filter results, project specific fields, and sort data.
 
 ---
 
