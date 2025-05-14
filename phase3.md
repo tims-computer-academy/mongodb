@@ -31,9 +31,9 @@ Then launch Compass: `mongodb-compass`
 
 ## Step 2: Connect to Your Local MongoDB Server
 
-In the connection dialog:
+In Compass, click "**+ Add new connection**".
 
-1. Under “Connection String”, enter:
+1. Under “URI”, check that the following connection string is configured:
 
    ```
    mongodb://localhost:27017
@@ -49,9 +49,7 @@ Click on **`personal_archive`** — the one you created in Phase 1.
 
 ## Step 3: Explore Your Collections
 
-Click on the database `personal_archive`.
-
-You’ll see two types of collections:
+After you have clicked on your database `personal_archive`, you'll see two types of collections:
 
 ### A. GridFS Collections (for files)
 
@@ -60,12 +58,13 @@ You’ll see two types of collections:
 
 These were created automatically when you uploaded files via `mongofiles`.
 
-Click on `fs.files` to browse uploaded files. You’ll see fields like:
+Click on `fs.files` to browse uploaded files. You’ll see the fields:
 
-* `filename`
-* `length` (file size)
+* `_id`
+* `length` (in bytes)
 * `chunkSize`
-* `uploadDate`
+* `uploadDate
+* `filename`
 * `metadata` (if you added any)
 
 ### B. Metadata Collection (for structured data)
@@ -81,9 +80,7 @@ Click on it to view the structured documents you inserted — descriptions, tags
 You can find specific documents without writing JavaScript.
 
 1. Go to the **file\_metadata** collection
-2. Click **"Filter"**
-
-Try one of these examples (without needing code):
+2. Click in the **filter field** (filter editor) and try one of these examples (without needing code):
 
 ### Find unreviewed documents
 
@@ -93,7 +90,7 @@ In the filter editor:
 { "reviewed": false }
 ```
 
-Click **Apply**.
+Click **Find**.
 
 ### Find documents with a certain tag
 
@@ -109,7 +106,7 @@ Compass automatically searches arrays just like the shell.
 
 In **any collection** (e.g. `file_metadata` or `fs.files`):
 
-* Click the **Edit** button next to a document
+* Click the **Edit document** button next to a document
 * Change fields or add new ones using the visual editor
 * Click **Update** to save your changes
 
@@ -121,16 +118,9 @@ This is useful if you're managing metadata by hand or adding notes to files you�
 
 ## Step 6: Inspect GridFS Files Visually
 
-Go to `fs.files` and click on a document.
+Go to `fs.files`. Each document here represents a single file. This is the **structured metadata** that GridFS stores alongside each file.
 
-You’ll see file info like:
-
-* `filename`
-* `length` (in bytes)
-* `uploadDate`
-* any custom `metadata` you added in Phase 1
-
-GridFS chunks (`fs.chunks`) are not meant to be read manually — but they’re stored in the background and linked via `files_id`.
+> You **do not** need to inspect the `fs.chunks` collection directly — that’s where MongoDB stores the binary file data in pieces. It’s managed automatically and only useful for low-level troubleshooting.
 
 ---
 
@@ -178,5 +168,3 @@ This phase gives you a **hands-on interface** to manage your data — especially
 ## Next Step
 
 🚀 [Phase 4](https://github.com/tims-computer-academy/path_adv_mongodb/blob/main/phase4.md)
-
-> You’re ready to start designing your own metadata schemas, apply indexing for faster search, or even start building front-ends that connect to MongoDB.
