@@ -233,4 +233,4 @@ This prepares you to store, organize, and retrieve large or small files inside M
 
 ## Next Step
 
-🚀 [Phase 2](https://github.com/tims-computer-academy/path_adv_mongodb/blob/main/phase2.md)
+🚀 [Phase 2](https://github.com/tims-computer-academy/mongodb/blob/main/phase2.md)
