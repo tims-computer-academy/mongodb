@@ -6,7 +6,7 @@ This phase introduces how to manipulate and query data in MongoDB. You'll learn 
 
 ## Step 1: Insert & Update Documents
 
-### 1.1 Insert a Document
+### Insert a Document
 
 You can store data (e.g., metadata) in MongoDB using `insertOne()` for one document or `insertMany()` for multiple documents.
 
@@ -36,7 +36,7 @@ db.file_metadata.insertMany([
 ])
 ```
 
-### 1.2 Update a Document
+### Update a Document
 
 To update an existing document, you use `updateOne()` or `updateMany()`.
 
@@ -69,7 +69,7 @@ db.file_metadata.updateMany(
 
 You can find documents using `find()`, which accepts optional filters.
 
-### 2.1 Basic Querying
+### Basic Querying
 
 For example, to find all documents where `reviewed` is `true`:
 
@@ -82,7 +82,7 @@ db.file_metadata.find({ reviewed: true }).pretty()
   * `find()` retrieves all documents that match the given filter.
   * `.pretty()` formats the result to be more readable.
 
-### 2.2 Using Operators
+### Using Operators
 
 MongoDB supports operators to perform more advanced queries.
 
@@ -103,7 +103,7 @@ You can use other operators like `$gt`, `$lt`, `$ne`, etc.
 
 ## Step 3: Projection & Sorting
 
-### 3.1 Projection: Return Specific Fields
+### Projection: Return Specific Fields
 
 To only return specific fields (e.g., `filename` and `tags`), you use a projection.
 
@@ -124,7 +124,7 @@ db.file_metadata.find({}, { description: 0 }).pretty()
 
 This will return all fields except `description`.
 
-### 3.2 Sorting Results
+### Sorting Results
 
 To sort the results by `addedAt` in descending order:
 
@@ -140,7 +140,7 @@ db.file_metadata.find().sort({ addedAt: -1 }).pretty()
 
 ## Step 4: Delete Documents
 
-### 4.1 Delete a Single Document
+### Delete a Single Document
 
 To delete a single document, use `deleteOne()`:
 
@@ -152,7 +152,7 @@ db.file_metadata.deleteOne({ filename: "another_test.pdf" })
 
   * This deletes the first document that matches the given filter (`filename: "another_test.pdf"`).
 
-### 4.2 Delete Multiple Documents
+### Delete Multiple Documents
 
 To delete multiple documents at once, use `deleteMany()`:
 
@@ -166,7 +166,7 @@ db.file_metadata.deleteMany({ reviewed: false })
 
 ---
 
-## Summary of Phase 2
+## Summary
 
 By completing this phase, you should now be comfortable with the following operations in MongoDB:
 
