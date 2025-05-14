@@ -134,7 +134,7 @@ mongosh
 use personal_archive
 ```
 
-2. Run this command to update the metadata:
+2. Run this command to update the metadata (important: case sensitive!):
 
 ```bash
 db.fs.files.updateOne(
