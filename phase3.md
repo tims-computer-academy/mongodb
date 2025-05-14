@@ -21,8 +21,8 @@ Choose the “Community” edition (free) and install it like any other desktop 
 
 ```bash
 sudo apt install ./mongodb-compass_1.46.2_amd64.deb
-sudo chmod 644 ./mongodb-compass_1.46.2_amd64.deb // If necessary
-sudo apt install ./mongodb-compass_1.46.2_amd64.deb // If necessary
+sudo chmod 644 ./mongodb-compass_1.46.2_amd64.deb # If necessary
+sudo apt install ./mongodb-compass_1.46.2_amd64.deb # If necessary
 ```
 
 Then launch Compass: `mongodb-compass`
