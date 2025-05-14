@@ -109,12 +109,12 @@ sudo systemctl restart mongod
 
 You now know how to:
 
-* Install MongoDB Community Edition securely using `apt` on a Debian-based system
-* Import MongoDB’s GPG key and set up a verified package source
-* Install key MongoDB components: `mongod`, `mongosh`, `mongofiles`, and supporting tools
-* Start the MongoDB server and enable it to run at boot
-* Verify that MongoDB is running correctly using `systemctl` and `mongosh`
-* Restrict MongoDB access to `localhost` for basic security hardening
+✅ Install MongoDB Community Edition securely using `apt` on a Debian-based system
+✅ Import MongoDB’s GPG key and set up a verified package source
+✅ Install key MongoDB components: `mongod`, `mongosh`, `mongofiles`, and supporting tools
+✅ Start the MongoDB server and enable it to run at boot
+✅ Verify that MongoDB is running correctly using `systemctl` and `mongosh`
+✅ Restrict MongoDB access to `localhost` for basic security hardening
 
 This prepares your system for safe local development and sets a clean, secure baseline for working with MongoDB in the next phases.
 
