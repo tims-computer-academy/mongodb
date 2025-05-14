@@ -91,6 +91,6 @@ Then restart MongoDB:
 sudo systemctl restart mongod
 ```
 
----
+## Next Step
 
-Let me know once you've completed these steps. I’ll help you test the server and move on to uploading your first PDF with GridFS.
+🚀 [Start with Phase 0]
