@@ -122,4 +122,4 @@ db.fs.files.updateOne(
 
 ## Next Step
 
-🚀 [Phase 2]
+🚀 [Phase 2](https://github.com/tims-computer-academy/path_adv_mongodb/blob/main/phase2.md)
