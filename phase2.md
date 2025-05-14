@@ -1,7 +1,3 @@
-Here is **Phase 2**, written in the same detailed and beginner-friendly style as your approved *Phase 1*:
-
----
-
 # Phase 2: MongoDB CRUD & Querying Basics
 
 This phase teaches you how to **store structured information** (like text data, metadata, tags, dates) in MongoDB and how to search, filter, and modify it.
@@ -254,13 +250,13 @@ db.file_metadata.deleteMany({ tags: "test" })
 
 You now know how to:
 
-✅ Insert one or many structured documents into a MongoDB collection
-✅ Search documents with filters and operators
-✅ Return specific fields and sort the results
-✅ Update documents with `$set`
+✅ Insert one or many structured documents into a MongoDB collection<br>
+✅ Search documents with filters and operators<br>
+✅ Return specific fields and sort the results<br>
+✅ Update documents with `$set`<br>
 ✅ Delete documents when they’re no longer needed
 
-This skillset is essential for working with **structured information** in MongoDB — metadata, notes, logs, records, and more.
+This skillset is essential for working with structured information in MongoDB — metadata, notes, logs, records, and more.
 
 ---
 
