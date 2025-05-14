@@ -252,4 +252,4 @@ With these protections, your MongoDB database is now suitable for **private, dai
 
 ## Next Step
 
-🚀 [Phase 5](https://github.com/tims-computer-academy/path_adv_mongodb/blob/main/phase5.md)
+🚀 [Phase 5](https://github.com/tims-computer-academy/mongodb/blob/main/phase5.md)
