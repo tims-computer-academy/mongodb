@@ -63,7 +63,7 @@ db.file_metadata.insertOne({
 * `insertOne(...)` creates a new document (record) inside that collection.
 * You can add any fields you want: strings, arrays, booleans, dates, etc.
 
-> In **Phase 1**, you learned to upload files using GridFS (`mongofiles`). In **Phase 2**, we're only working with structured metadata in a regular MongoDB collection (`file_metadata`). There’s no connection to an actual file on disk or in GridFS unless you choose to link them later.
+💡 In **Phase 1**, you learned to upload files using GridFS (`mongofiles`). In **Phase 2**, we're only working with structured metadata in a regular MongoDB collection (`file_metadata`). There’s no connection to an actual file on disk or in GridFS unless you choose to link them later.
 
 > MongoDB collections are flexible — no need to define a schema up front.
 
