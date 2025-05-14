@@ -139,7 +139,7 @@ Find files added **after a certain date**:
 
 ```js
 db.file_metadata.find({
-  addedAt: { $gt: new Date("2024-01-01") }
+  addedAt: { $gt: new Date("2025-03-01") }
 }).pretty()
 ```
 
