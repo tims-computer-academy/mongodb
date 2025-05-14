@@ -34,7 +34,7 @@ Create a new admin user:
 
 ```js
 db.createUser({
-  user: "localadmin",
+  user: "admin",
   pwd: "strong_password_here",
   roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]
 })
