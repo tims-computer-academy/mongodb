@@ -48,10 +48,10 @@ Here’s a list of popular Debian-based distros and their current (or most relev
 jammy/mongodb-org/7.0
 ```
 
-🛑 MongoDB only supports Ubuntu LTS releases officially for APT repositories. As of now (May 2025), MongoDB does not provide official .deb packages for non-LTS versions like oracular. You can force it by using the jammy repo on 24.10, like this:
+🛑 MongoDB only supports Ubuntu LTS releases officially for APT repositories. As of now (May 2025), MongoDB does not provide official .deb packages for non-LTS versions like oracular. You can force it by using the jammy multiverse repo on 24.10, like this:
 
 ```bash
-echo "deb [signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+echo "deb [signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.multiverse
 ```
 
 But be warned: You may run into incompatibilities with newer libraries (GLIBC, systemd, libssl, etc.). This setup is not supported by MongoDB Inc. It may work or it may break subtly. Test thoroughly before deploying.
