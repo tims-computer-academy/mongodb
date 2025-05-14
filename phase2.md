@@ -256,7 +256,7 @@ You now know how to:
 ✅ Update documents with `$set`<br>
 ✅ Delete documents when they’re no longer needed
 
-This skillset is essential for working with structured information in MongoDB — metadata, notes, logs, records, and more.
+This skillset is essential for working with **structured information** in MongoDB — metadata, notes, logs, records, and more.
 
 ---
 
