@@ -4,11 +4,11 @@ This phase teaches you how to **secure your local MongoDB server** for responsib
 
 By default, MongoDB is open and unauthenticated — good for learning, but risky for real data. We’ll now configure basic protections:
 
-✅ Require login credentials (authentication)
-✅ Assign specific user roles (read-only, admin, etc.)
-✅ Block outside access with a firewall
-✅ Make encrypted backups
-✅ Understand how MongoDB logs user actions
+🔒 Require login credentials (authentication)<br>
+🔒 Assign specific user roles (read-only, admin, etc.)<br>
+🔒 Block outside access with a firewall<br>
+🔒 Make encrypted backups<br>
+🔒 Understand how MongoDB logs user actions
 
 ---
 
