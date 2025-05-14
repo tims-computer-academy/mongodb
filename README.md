@@ -72,6 +72,19 @@
 
 ---
 
+## Phase 6: Capstone
+
+| Topic                      | Goal                                          | Tools                                |
+| -------------------------- | --------------------------------------------- | ------------------------------------ |
+| Automated backups          | Ensure reliable daily data backups            | `cron`, `mongodump`, shell scripts   |
+| Encrypted backup storage   | Protect backup files from unauthorized access | `gpg`, `openssl`                     |
+| Remote/offsite sync        | Mirror backups to other systems or cloud      | `rsync`, `rclone`, SFTP              |
+| Logging and notifications  | Track success/failure, get alerts             | `mailutils`, `cron logs`, shell logs |
+| Retention and cleanup      | Manage storage space with auto-deletion       | `find`, `rm`, shell script logic     |
+| Live monitoring (optional) | Observe DB performance and activity           | `mongotop`, `mongostat`              |
+
+---
+
 ## Security Principles Throughout
 
 * MongoDB will be **auth-protected** before any external access
@@ -80,7 +93,5 @@
 * Only **open-source, offline tools** will be used
 
 ---
-
-## Next Step
 
 🚀 [Let's begin!](https://github.com/tims-computer-academy/mongodb/blob/main/phase0.md)
