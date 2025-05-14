@@ -105,6 +105,21 @@ sudo systemctl restart mongod
 
 ---
 
+## Summary: What You Learned in Phase 0
+
+You now know how to:
+
+* Install MongoDB Community Edition securely using `apt` on a Debian-based system
+* Import MongoDB’s GPG key and set up a verified package source
+* Install key MongoDB components: `mongod`, `mongosh`, `mongofiles`, and supporting tools
+* Start the MongoDB server and enable it to run at boot
+* Verify that MongoDB is running correctly using `systemctl` and `mongosh`
+* Restrict MongoDB access to `localhost` for basic security hardening
+
+This prepares your system for safe local development and sets a clean, secure baseline for working with MongoDB in the next phases.
+
+---
+
 ## Next Step
 
 🚀 [Phase 1](https://github.com/tims-computer-academy/path_adv_mongodb/blob/main/phase1.md)
