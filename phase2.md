@@ -27,7 +27,7 @@ Example document (metadata for a PDF file):
 
 This document is stored in a collection you choose (e.g. `file_metadata`).
 
-> Note: In **Phase 1**, you learned to upload files using GridFS (`mongofiles`). In **Phase 2**, we're only working with structured metadata in a regular MongoDB collection (`file_metadata`). There’s no connection to an actual file on disk or in GridFS unless you choose to link them later.
+> In **Phase 1**, you learned to upload files using GridFS (`mongofiles`). In **Phase 2**, we're only working with structured metadata in a regular MongoDB collection (`file_metadata`). There’s no connection to an actual file on disk or in GridFS unless you choose to link them later.
 
 ---
 
