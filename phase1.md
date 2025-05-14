@@ -1,6 +1,6 @@
 # Phase 1: Store & Retrieve Files with GridFS
 
-This phase focuses on uploading, downloading, and managing files (like PDFs) in MongoDB using GridFS, which is built for handling large binary files.
+This phase focuses on uploading, downloading, and managing files (like PDFs, images, or videos) in MongoDB using GridFS, which is built for handling large binary files.
 
 ## What is GridFS?
 
