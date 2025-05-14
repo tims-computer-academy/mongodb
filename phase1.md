@@ -1,8 +1,4 @@
-Absolutely — here's a **full rewrite of Phase 1**, now styled to match the clarity and depth used in Phase 2. This version avoids jargon, explains all commands and concepts, and assumes **no prior knowledge** of MongoDB.
-
----
-
-# Phase 1: Store and Retrieve Files with GridFS (Beginner-Friendly)
+# Phase 1: Store and Retrieve Files with GridFS
 
 This phase teaches you how to store and retrieve **binary files** (like PDFs, images, videos) in MongoDB using **GridFS**.
 
