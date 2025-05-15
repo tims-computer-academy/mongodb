@@ -1,17 +1,13 @@
-Great — here is the **cleaned-up version of the Capstone phase**, with **all backup logic removed** and replaced by a short note pointing back to Phase 4. This preserves your structure, avoids redundancy, and stays consistent with the table. We'll update the summary table and Phase 4 next.
-
----
-
 # Phase 6: Capstone
 
 This final phase turns your MongoDB setup into a **professional, self-sustaining data archive** — secure, automated, and built for the long haul.
 
 You’ve already built a local, secure, authenticated server. Now you’ll learn how to:
 
-⚙️ Schedule recurring tasks with `cron`
-📦 Sync encrypted data to other devices or the cloud
-📡 Get notified when something goes wrong
-🗃️ Manage long-term data retention
+⚙️ Schedule recurring tasks with `cron`<br>
+📦 Sync encrypted data to other devices or the cloud<br>
+📡 Get notified when something goes wrong<br>
+🗃️ Manage long-term data retention<br>
 📊 Monitor system activity and performance
 
 > **Note:** Backup creation and encryption were covered in **Phase 4: Local Security**. This phase assumes you already generate backups and store them safely.
@@ -125,28 +121,18 @@ These tools help with diagnosis and tuning but aren’t needed for casual use.
 
 ## Capstone Summary
 
-✅ Offsite backup syncing
-✅ Logging and error alerts
-✅ Retention and cleanup policies
-✅ Live database monitoring (optional)
-
 Your MongoDB archive is now:
 
-✔️ Secure
-✔️ Backed up
-✔️ Synced
-✔️ Automated
-✔️ Self-monitoring
+✅ Secure<br>
+✅ Backed up<br>
+✅ Synced<br>
+✅ Automated<br>
+✅ Self-monitoring
 
 This setup is stable enough to run unattended for months or years — ideal for private archives, project data, personal records, or long-term documentation.
 
 ---
 
-## Next?
+## Finish
 
-You’ve completed the full MongoDB path for local self-hosting and personal archiving. From here, you can:
-
-* Add cloud hosting or replication
-* Set up user-friendly web apps on top of your data
-* Explore advanced tooling like Grafana, Ansible, or Kubernetes
-* Contribute your setup guide to others
+Click here to reach the finish: [Finish](https://github.com/tims-computer-academy/mongodb/blob/main/finish.md)
