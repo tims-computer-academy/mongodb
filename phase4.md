@@ -227,11 +227,11 @@ For deeper auditing, see: [MongoDB Audit Logs](https://www.mongodb.com/docs/manu
 
 ## Summary: What You Learned in Phase 4
 
-✅ Require logins for MongoDB access
-✅ Create admin and read/write users
-✅ Limit access to localhost only
-✅ Use `ufw` or `iptables` to block outside traffic
-✅ Automate encrypted daily backups
+✅ Require logins for MongoDB access<br>
+✅ Create admin and read/write users<br>
+✅ Limit access to localhost only<br>
+✅ Use `ufw` or `iptables` to block outside traffic<br>
+✅ Automate encrypted daily backups<br>
 ✅ Read logs to monitor activity
 
 You now have a MongoDB system that is safe, encrypted, and backed up — suitable for private use on a personal or shared machine.
