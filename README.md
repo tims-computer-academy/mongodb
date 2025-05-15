@@ -9,86 +9,78 @@
 
 **Requirements**
 * Debian-based Linux
-* Use `apt` (package manager) for installation
+* `apt` (package manager) for installation
 
 ---
 
 ## Phase 0: Install & Secure MongoDB Locally
 
-| Topic                   | Goal                                             | Tools                       |
-| ----------------------- | ------------------------------------------------ | --------------------------- |
-| Install via `apt`       | Install the latest MongoDB Community Edition     | `apt`, MongoDB APT repo     |
-| Verify service status   | Ensure MongoDB starts and runs as a systemd unit | `systemctl`, `mongod` logs  |
-| Use `mongosh`           | Interact with MongoDB shell                      | `mongosh`                   |
-| Configure default paths | Verify data (`/var/lib/mongodb`) and logs        | `mongod.conf`, `journalctl` |
-| Lock down local access  | Bind MongoDB to localhost only                   | `mongod.conf`               |
+| Topic                   | Goal                                             |
+| ----------------------- | ------------------------------------------------ |
+| Install via `apt`       | Install the latest MongoDB Community Edition     |
+| Verify service status   | Ensure MongoDB starts and runs as a systemd unit |
+| Use `mongosh`           | Interact with MongoDB shell                      |
+| Configure default paths | Verify data (`/var/lib/mongodb`) and logs        |
+| Lock down local access  | Bind MongoDB to localhost only                   |
 
 ## Phase 1: Store & Retrieve Files with GridFS
 
-| Topic           | Goal                                         | Tools                   |
-| --------------- | -------------------------------------------- | ----------------------- |
-| What is GridFS? | Learn how MongoDB stores large files         | GridFS                  |
-| Store a PDF     | Upload a PDF file to MongoDB                 | `mongofiles`, `mongosh` |
-| Retrieve a PDF  | Download it back from the DB to disk         | `mongofiles`            |
-| Add metadata    | Attach tags, source info, descriptions, etc. | BSON/JSON documents     |
+| Topic           | Goal                                         |
+| --------------- | -------------------------------------------- |
+| What is GridFS? | Learn how MongoDB stores large files         |
+| Store a PDF     | Upload a PDF file to MongoDB                 |
+| Retrieve a PDF  | Download it back from the DB to disk         |
+| Add metadata    | Attach tags, source info, descriptions, etc. |
 
 ## Phase 2: MongoDB CRUD & Querying Basics
 
-| Topic                | Goal                                   | Tools                                    |
-| -------------------- | -------------------------------------- | ---------------------------------------- |
-| Insert & update docs | Store structured data                  | `insertOne()`, `updateOne()`             |
-| Query with filters   | Find documents with conditions         | `find()`, operators (`$gt`, `$in`, etc.) |
-| Projection & sorting | Return specific fields and sorted docs | `{ field: 1 }`, `.sort()`                |
-| Delete & bulk ops    | Remove or change large sets of data    | `deleteMany()`, `updateMany()`           |
+| Topic                | Goal                                   |
+| -------------------- | -------------------------------------- |
+| Insert & update docs | Store structured data                  |
+| Query with filters   | Find documents with conditions         |
+| Projection & sorting | Return specific fields and sorted docs |
+| Delete & bulk ops    | Remove or change large sets of data    |
 
 ## Phase 3: GUI Tools & Visual Data Management
 
-| Topic                  | Goal                                  | Tools                         |
-| ---------------------- | ------------------------------------- | ----------------------------- |
-| Use MongoDB Compass    | GUI for document viewing & CRUD       | MongoDB Compass (open source) |
-| GridFS file inspection | View stored PDFs & metadata visually  | Compass file browser tab      |
-| Visual query builder   | Create queries without writing code   | Compass query builder         |
-| Optional: Mongoku      | Try a lightweight open-source web GUI | Mongoku                       |
+| Topic                  | Goal                                  |
+| ---------------------- | ------------------------------------- |
+| Use MongoDB Compass    | GUI for document viewing & CRUD       |
+| GridFS file inspection | View stored PDFs & metadata visually  |
+| Visual query builder   | Create queries without writing code   |
+| Optional: Mongoku      | Try a lightweight open-source web GUI |
 
 ## Phase 4: Local Security for Daily Use
 
-| Topic                 | Goal                                        | Tools                           |
-| --------------------- | ------------------------------------------- | ------------------------------- |
-| Enable auth           | Require login for any MongoDB access        | `mongod.conf`, `createUser()`   |
-| User roles            | Limit privileges (read-only, admin, etc.)   | MongoDB roles system            |
-| Local firewall rules  | Block external access, only allow localhost | `ufw`, `iptables`               |
-| Encrypted backups     | Keep data and files safe                    | `mongodump`, GPG or OpenSSL     |
-| Logging & audit trail | Track who did what in the DB                | MongoDB logs, optional auditing |
+| Topic                 | Goal                                        |
+| --------------------- | ------------------------------------------- |
+| Enable auth           | Require login for any MongoDB access        |
+| User roles            | Limit privileges (read-only, admin, etc.)   |
+| Local firewall rules  | Block external access, only allow localhost |
+| Encrypted backups     | Dump and encrypt data regularly             |
+| Scheduled backups     | Automate daily encrypted dumps              |
+| Logging & audit trail | Track who did what in the DB                |
 
 ## Phase 5: Remote Access & Self-Hosting
 
-| Topic                      | Goal                                      | Tools                               |
-| -------------------------- | ----------------------------------------- | ----------------------------------- |
-| Network exposure config    | Allow secure access from other devices    | `mongod.conf`, IP binding           |
-| TLS with self-signed certs | Encrypt traffic between client/server     | OpenSSL                             |
-| SSH or VPN tunneling       | Harden access from remote systems         | `ssh`, `openvpn`, `tailscale`       |
-| Fail2Ban & firewall tuning | Prevent brute-force & unauthorized access | `fail2ban`, `ufw`                   |
-| Monitoring usage           | Check DB health, performance, backups     | `mongotop`, `mongostat`, shell logs |
+| Topic                      | Goal                                      |
+| -------------------------- | ----------------------------------------- |
+| Network exposure config    | Allow secure access from other devices    |
+| TLS with self-signed certs | Encrypt traffic between client/server     |
+| SSH or VPN tunneling       | Harden access from remote systems         |
+| Fail2Ban & firewall tuning | Prevent brute-force & unauthorized access |
+| Monitoring usage           | Check DB health, performance, backups     |
 
 ---
 
 ## Phase 6: Capstone
 
-| Topic                      | Goal                                     | Tools                                |
-| -------------------------- | ---------------------------------------- | ------------------------------------ |
-| Remote/offsite sync        | Mirror backups to other systems or cloud | `rsync`, `rclone`, SFTP              |
-| Logging and notifications  | Track success/failure, get alerts        | `mailutils`, `cron logs`, shell logs |
-| Retention and cleanup      | Manage storage space with auto-deletion  | `find`, `rm`, shell script logic     |
-| Live monitoring (optional) | Observe DB performance and activity      | `mongotop`, `mongostat`              |
-
----
-
-## Security Principles Throughout
-
-* MongoDB will be **auth-protected** before any external access
-* **Only localhost bound by default**
-* Files and backups will be **encrypted**
-* Only **open-source, offline tools** will be used
+| Topic                      | Goal                                     |
+| -------------------------- | ---------------------------------------- |
+| Remote/offsite sync        | Mirror backups to other systems or cloud |
+| Logging and notifications  | Track success/failure, get alerts        |
+| Retention and cleanup      | Manage storage space with auto-deletion  |
+| Live monitoring (optional) | Observe DB performance and activity      |
 
 ---
 
