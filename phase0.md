@@ -122,4 +122,4 @@ This prepares your system for safe local development and sets a clean, secure ba
 
 ## Next Step
 
-🚀 [Phase 1](https://github.com/tims-computer-academy/mongodb/blob/main/phase1.md)
+🚀 [Phase 1: Store & retrieve files with GridFS](https://github.com/tims-computer-academy/mongodb/blob/main/phase1.md)
