@@ -23,19 +23,34 @@ Below is a simple **visual diagram of GridFS**. It shows how a file flows throug
 
 ```mermaid
 graph TD
-    A[Original File] --> B(Split into Chunks)
+    A[Original File] --> B(Split into 3 Chunks)
     B --> C{GridFS Storage}
     C --> D[fs.chunks Collection]
     C --> E[fs.files Collection]
-    
-    D -->|Stores binary chunks| F[Chunk Document Structure]
-    F --> G["{
+
+    D --> D1[Chunk 0]
+    D --> D2[Chunk 1]
+    D --> D3[Chunk 2]
+
+    D1 --> S1["{
         _id: ObjectId,
         files_id: ObjectId,
-        n: Integer,
+        n: 0,
         data: BinData
     }"]
-    
+    D2 --> S2["{
+        _id: ObjectId,
+        files_id: ObjectId,
+        n: 1,
+        data: BinData
+    }"]
+    D3 --> S3["{
+        _id: ObjectId,
+        files_id: ObjectId,
+        n: 2,
+        data: BinData
+    }"]
+
     E -->|Stores metadata| H["{
         _id: ObjectId,
         filename: String,
@@ -45,9 +60,12 @@ graph TD
         metadata: Object,
         md5: String
     }"]
-    
+
     style A fill:#d4f1f9,stroke:#333
     style D fill:#ffdddd,stroke:#333
+    style D1 fill:#ffe6e6,stroke:#333
+    style D2 fill:#ffe6e6,stroke:#333
+    style D3 fill:#ffe6e6,stroke:#333
     style E fill:#ddffdd,stroke:#333
 ```
 
