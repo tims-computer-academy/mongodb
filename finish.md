@@ -1,45 +1,29 @@
-# Congratulations!
+# Congratulations 🎉
 
 You've completed the Mongo DB learning path.
 
+![MongoDB Capstone Completed](https://dummyimage.com/350x70/901090/ffffff\&text="MongoDB"+Completed)
 
-## Now, it’s time to **go beyond**
+**But don’t stop here — the more you explore, the more potential you’ll uncover.**
 
-## 🔰 Official Badge
+## Now, it’s time to go beyond
 
-![MongoDB Capstone Completed](https://dummyimage.com/280x60/4caf50/ffffff\&text=MongoDB+Capstone+Completed)
+Once you’ve grasped the basics, these resources can guide you to the next level:
 
-*(For now, this is a placeholder image. I can generate a custom one if you specify your preferred text/logo style.)*
+[MongoDB Documentation](https://www.mongodb.com/docs/)
+[MongoDB BSON Format](https://www.mongodb.com/docs/manual/reference/bson-types/)
+[GridFS Overview](https://www.mongodb.com/docs/manual/core/gridfs/)
+[mongosh Manual](https://www.mongodb.com/docs/mongodb-shell/)
+[Database Design (Microsoft)](https://support.microsoft.com/en-us/office/database-design-basics-eb2159cf-1e30-401a-8084-bd4f9c9ca1f5)
 
----
+And here some ideas, what else you could do with MongoDB:
 
-## 📚 Core References
+* Remote collaboration: Set up multi-user access, role auditing
+* Deployment to VPS/cloud: Host MongoDB on DigitalOcean, Linode, AWS, etc.
+* Full-stack integration: Connect with Python, Node.js, or front-end frameworks
 
-| Category             | Resource                                                                                                                              |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| Official Docs        | [MongoDB Documentation](https://www.mongodb.com/docs/)                                                                                |
-| Schema Design Basics | [Database Design (Microsoft)](https://support.microsoft.com/en-us/office/database-design-basics-eb2159cf-1e30-401a-8084-bd4f9c9ca1f5) |
-| BSON Format          | [MongoDB BSON Format](https://www.mongodb.com/docs/manual/reference/bson-types/)                                                      |
-| GridFS File Storage  | [GridFS Overview](https://www.mongodb.com/docs/manual/core/gridfs/)                                                                   |
-| Shell Reference      | [mongosh Manual](https://www.mongodb.com/docs/mongodb-shell/)                                                                         |
+**The real power of MongoDB unfolds as you explore more advanced use cases and start building your own projects.**
 
----
+🃏 Don't forget to get your MongoDB cheatsheet here: [Cheatsheet](https://github.com/tims-computer-academy/mongodb/blob/main/cheatsheet.md)
 
-## 🚀 Suggested Directions After Capstone
-
-| Goal                            | What to Explore                                                          |
-| ------------------------------- | ------------------------------------------------------------------------ |
-| Remote collaboration            | Set up multi-user access, role auditing                                  |
-| Deployment to VPS/cloud         | Host MongoDB on DigitalOcean, Linode, AWS                                |
-| Full-stack integration          | Connect with Python, Node.js, or front-end frameworks                    |
-| Backup versioning & compression | Automate rotation, compression (e.g. `gzip` or `xz`)                     |
-| Continuous monitoring           | Integrate Prometheus, Grafana, or MongoDB Atlas monitoring               |
-| Professional schema design      | Normalize documents, embed vs reference, indexing strategy               |
-| Certification                   | Consider [MongoDB University's Free Courses](https://learn.mongodb.com/) |
-
----
-
-## ✅ Next Step
-
-**→ Download your personal MongoDB Cheatsheet**
-(coming next in Markdown format)
+Tim
