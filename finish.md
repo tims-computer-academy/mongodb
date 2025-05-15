@@ -1,7 +1,6 @@
-# 🎉 **Finish** 🎉
+# Congratulations!
 
-Congratulations! You've completed the Mongo DB learning path.
-
+You've completed the Mongo DB learning path.
 
 
 ## Now, it’s time to **go beyond**
