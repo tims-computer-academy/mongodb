@@ -2,7 +2,7 @@
 
 You've completed the Mongo DB learning path.
 
-![MongoDB Capstone Completed](https://dummyimage.com/350x50/901090/ffffff\&text="MongoDB"+Completed)
+![MongoDB Capstone Completed](https://dummyimage.com/400x60/901090/ffffff\&text="MongoDB"+Completed)
 
 **But don’t stop here — the more you explore, the more potential you’ll uncover.**
 
