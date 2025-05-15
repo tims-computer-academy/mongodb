@@ -1,4 +1,4 @@
-Absolutely — here is the finalized version of **Phase 6**, now titled **Capstone**, with wording adjusted accordingly:
+Great — here is the **cleaned-up version of the Capstone phase**, with **all backup logic removed** and replaced by a short note pointing back to Phase 4. This preserves your structure, avoids redundancy, and stays consistent with the table. We'll update the summary table and Phase 4 next.
 
 ---
 
@@ -8,69 +8,17 @@ This final phase turns your MongoDB setup into a **professional, self-sustaining
 
 You’ve already built a local, secure, authenticated server. Now you’ll learn how to:
 
-⚙️ Automate backups and maintenance
+⚙️ Schedule recurring tasks with `cron`
 📦 Sync encrypted data to other devices or the cloud
-📅 Schedule recurring tasks with `cron`
 📡 Get notified when something goes wrong
 🗃️ Manage long-term data retention
+📊 Monitor system activity and performance
+
+> **Note:** Backup creation and encryption were covered in **Phase 4: Local Security**. This phase assumes you already generate backups and store them safely.
 
 ---
 
-## Step 1: Automate Daily Backups with `cron`
-
-You shouldn’t have to remember to back up your data — your system should do it for you.
-
-### A. Create a Backup Script
-
-Make a file called `backup_mongo.sh`:
-
-```bash
-nano ~/scripts/backup_mongo.sh
-```
-
-Paste in:
-
-```bash
-#!/bin/bash
-
-DATE=$(date +%Y-%m-%d)
-BACKUP_DIR="/home/yourname/mongodb_backups/$DATE"
-
-mongodump --db personal_archive --out "$BACKUP_DIR"
-
-# Optional: Encrypt backup
-gpg -c "$BACKUP_DIR"/personal_archive/*.bson
-rm "$BACKUP_DIR"/personal_archive/*.bson
-
-# Log completion
-echo "Backup completed on $DATE" >> /var/log/mongo_backup.log
-```
-
-Make it executable:
-
-```bash
-chmod +x ~/scripts/backup_mongo.sh
-```
-
-### B. Run It Automatically
-
-Edit your crontab:
-
-```bash
-crontab -e
-```
-
-Add this to run daily at 2:00 AM:
-
-```bash
-0 2 * * * /home/yourname/scripts/backup_mongo.sh
-```
-
-Now your backups happen quietly and automatically.
-
----
-
-## Step 2: Sync Backups to Another Location
+## Step 1: Sync Backups to Another Location
 
 To protect against hardware failure, theft, or accidental deletion, mirror your encrypted backups elsewhere.
 
@@ -101,7 +49,7 @@ Add this to your `cron` job or script.
 
 ---
 
-## Step 3: Add Logging and Alerts
+## Step 2: Add Logging and Alerts
 
 Backups that fail silently are a big risk. Add visibility.
 
@@ -139,7 +87,7 @@ fi
 
 ---
 
-## Step 4: Cleanup and Retention
+## Step 3: Cleanup and Retention
 
 You don’t need hundreds of old backups sitting around forever.
 
@@ -155,7 +103,7 @@ This keeps your disk space under control.
 
 ---
 
-## Step 5: Monitor the Database (Optional)
+## Step 4: Monitor the Database (Optional)
 
 Use MongoDB CLI tools to get live stats and check health.
 
@@ -177,7 +125,6 @@ These tools help with diagnosis and tuning but aren’t needed for casual use.
 
 ## Capstone Summary
 
-✅ Automated daily backups
 ✅ Offsite backup syncing
 ✅ Logging and error alerts
 ✅ Retention and cleanup policies
@@ -203,5 +150,3 @@ You’ve completed the full MongoDB path for local self-hosting and personal arc
 * Set up user-friendly web apps on top of your data
 * Explore advanced tooling like Grafana, Ansible, or Kubernetes
 * Contribute your setup guide to others
-
-Let me know if you’d like a post-capstone roadmap or just want to stop here.
