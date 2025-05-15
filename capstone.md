@@ -135,4 +135,4 @@ This setup is stable enough to run unattended for months or years — ideal for 
 
 ## Finish
 
-Click here to reach the finish: [Finish](https://github.com/tims-computer-academy/mongodb/blob/main/finish.md)
+🏁 Click here to reach the finish: [Finish](https://github.com/tims-computer-academy/mongodb/blob/main/finish.md)
