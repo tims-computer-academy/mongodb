@@ -1,6 +1,6 @@
 # Congratulations 🎉
 
-You've completed the Mongo DB learning path.
+You've completed the MongoDB learning path.
 
 ![MongoDB Capstone Completed](https://dummyimage.com/400x60/901090/ffffff\&text="MongoDB"+Completed)
 
@@ -25,6 +25,6 @@ And here some ideas, what else you could do with MongoDB:
 
 **The real power of MongoDB unfolds as you explore more advanced use cases and start building your own projects.**
 
-🃏 Don't forget to get your MongoDB cheatsheet here: [Cheatsheet](https://github.com/tims-computer-academy/mongodb/blob/main/cheatsheet.md)
+🤫 Don't forget to get your MongoDB cheatsheet here: [Cheatsheet](https://github.com/tims-computer-academy/mongodb/blob/main/cheatsheet.md)
 
-Tim
+Tim 👾
