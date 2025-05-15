@@ -4,9 +4,9 @@ This phase teaches you how to **safely expose your MongoDB server to other devic
 
 You’ll learn how to:
 
-🔐 Encrypt remote access with TLS certificates
-🛡️ Harden your server with VPN or SSH tunnels
-🚫 Block brute-force attacks with Fail2Ban
+🔐 Encrypt remote access with TLS certificates<br>
+🛡️ Harden your server with VPN or SSH tunnels<br>
+🚫 Block brute-force attacks with Fail2Ban<br>
 📈 Monitor your database’s health and usage
 
 > This phase assumes your MongoDB server is hosted on a computer you control — either a home server, virtual machine, or cloud instance.
@@ -214,10 +214,10 @@ Use this to spot unusual spikes or stalls.
 
 ## Summary: What You Learned in Phase 5
 
-✅ Allow secure remote access via IP and port
-✅ Encrypt connections using TLS (self-signed certs)
-✅ Tunnel access with SSH or VPN
-✅ Harden server against brute-force attacks
+✅ Allow secure remote access via IP and port<br>
+✅ Encrypt connections using TLS (self-signed certs)<br>
+✅ Tunnel access with SSH or VPN<br>
+✅ Harden server against brute-force attacks<br>
 ✅ Monitor database usage and performance
 
 With this phase complete, your MongoDB server is now **ready for secure remote access and long-term self-hosting**.
