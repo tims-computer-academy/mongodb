@@ -83,4 +83,4 @@
 
 ---
 
-🚀 [Let's begin!](https://github.com/tims-computer-academy/mongodb/blob/main/phase0.md)
+🚀 [Let's begin: Install & secure MongoDB locally](https://github.com/tims-computer-academy/mongodb/blob/main/phase0.md)
