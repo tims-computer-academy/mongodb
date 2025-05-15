@@ -1,14 +1,14 @@
 # Phase 4: Local Security for Daily Use
 
-This phase teaches you how to **secure your local MongoDB server** for responsible, long-term use on your own system.
+This phase teaches you how to **secure your local MongoDB server** and **back up your data safely**.
 
 By default, MongoDB is open and unauthenticated — good for learning, but risky for real data. We’ll now configure basic protections:
 
-🔒 Require login credentials (authentication)<br>
-🔒 Assign specific user roles (read-only, admin, etc.)<br>
-🔒 Block outside access with a firewall<br>
-🔒 Make encrypted backups<br>
-🔒 Understand how MongoDB logs user actions
+🔒 Require login credentials (authentication)
+🔒 Assign specific user roles (read-only, admin, etc.)
+🔒 Block outside access with a firewall
+💾 Automate and encrypt local backups
+📝 Understand how MongoDB logs user actions
 
 ---
 
@@ -18,13 +18,13 @@ MongoDB starts with **no login required**. Let’s fix that.
 
 ### A. Create a MongoDB Admin User
 
-First, open the MongoDB shell **before** enabling authentication:
+Open the MongoDB shell **before** enabling authentication:
 
 ```bash
 mongosh
 ```
 
-Switch to the `admin` database (MongoDB’s system-wide config DB):
+Switch to the `admin` database:
 
 ```js
 use admin
@@ -34,15 +34,13 @@ Create a new admin user:
 
 ```js
 db.createUser({
-  user: "localadminadmin",
+  user: "localadmin",
   pwd: "strong_password_here",
   roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]
 })
 ```
 
-This user can create other users and manage access across all databases.
-
-If you want this (or another) user to have root/superuser rights, i.e. full admin access, you can provide this with:
+To give full root access:
 
 ```js
 db.grantRolesToUser("localadmin", [
@@ -50,42 +48,30 @@ db.grantRolesToUser("localadmin", [
 ])
 ```
 
-You can now exit `mongosh`:
+Exit:
 
-```js
+```bash
 exit
 ```
 
 ### B. Edit `mongod.conf` to Require Login
 
-Find your MongoDB config file — usually here:
-
-```
-/etc/mongod.conf
-```
-
-Open it in a text editor:
-
 ```bash
 sudo nano /etc/mongod.conf
 ```
 
-Scroll down (or add this section if missing):
+Ensure this is present:
 
 ```yaml
 security:
   authorization: enabled
 ```
 
-Save and close the file.
-
-Restart MongoDB to apply the change:
+Restart MongoDB:
 
 ```bash
 sudo systemctl restart mongod
 ```
-
-Now authentication is required for any operation.
 
 ---
 
@@ -93,82 +79,58 @@ Now authentication is required for any operation.
 
 ### In the MongoDB Shell
 
-Open the MongoDB shell again:
-
-```bash
-mongosh
-```
-
-Now log in with your new admin user:
-
-```js
-use admin
-db.auth("localadmin", "strong_password_here")
-```
-
-If successful, you’re now authenticated.
-
-To skip `db.auth(...)` every time, you can also connect like this:
-
 ```bash
 mongosh -u localadmin -p --authenticationDatabase admin
 ```
 
-(MongoDB will prompt you for the password.)
+Or:
+
+```bash
+mongosh
+use admin
+db.auth("localadmin", "strong_password_here")
+```
 
 ### In MongoDB Compass
 
-Open MongoDB Compass.
+Use **Username/Password** with:
 
-On the left pane, click on the three dots next to your respective database. Select **Edit Connection** → **Advanced Connection Options** → **Authentication**. Choose **Username/Password** and enter:
-
-* Username: your user name
+* Username: `localadmin`
 * Password: your password
-* Authentication: admin
+* Auth DB: `admin`
 
-Click on: **Save & Connect**.
-
-From now on, when you open MongoDB Compass and connect to your database, the system will login with your credentials.
-
-To strengthen security, you can go to **Edit** → **Settings** and enable **Protect Connection String Secrets**. This will hide the credentials in connection strings from users.
+Enable **Protect Connection String Secrets** for extra safety.
 
 ---
 
 ## Step 3: Create Limited Users
 
-You don’t want to use the `admin` user for everyday work. Let’s create a limited user for your database.
-
-### Create a Read/Write User for Your Archive
-
-In the shell, after logging in as admin, swith to the database where the new user shall be added to, e.g.: `use personal_archive`
-
-Then create the new user with the following command:
+Log in as admin, then:
 
 ```js
+use personal_archive
 db.createUser({
-  user: "archive_user", # Enter user name hier
-  pwd: "another_strong_password", #Enter password here
-  roles: [ { role: "readWrite", db: "personal_archive" } ] # Replace the name of your database
+  user: "archive_user",
+  pwd: "another_strong_password",
+  roles: [ { role: "readWrite", db: "personal_archive" } ]
 })
 ```
 
-You can now log in as this user when working on your files and metadata.
+Use this user for daily access to your personal archive.
 
 ---
 
 ## Step 4: Restrict Network Access (Firewall)
 
-By default, MongoDB listens on **all interfaces** (e.g. `0.0.0.0`), but we want to limit access to **localhost only** — especially if your computer is ever on a public network.
+### A. Bind to Localhost Only
 
-### A. Limit Access to Localhost Only
-
-Edit the config file:
+Edit:
 
 ```bash
 sudo nano /etc/mongod.conf
 ```
 
-Find the `net:` section and make sure it says:
+Make sure this is present:
 
 ```yaml
 net:
@@ -176,107 +138,106 @@ net:
   port: 27017
 ```
 
-This ensures that only local programs (on your machine) can connect.
-
-Restart the server:
+Restart MongoDB:
 
 ```bash
 sudo systemctl restart mongod
 ```
 
-### B. Add a Firewall Rule (optional but good)
-
-If you use `ufw`:
+### B. UFW Firewall (Optional but Recommended)
 
 ```bash
 sudo ufw allow from 127.0.0.1 to any port 27017
-```
-
-Then deny everything else:
-
-```bash
 sudo ufw deny 27017
-```
-
-Check your rules:
-
-```bash
 sudo ufw status
 ```
 
-This makes sure nobody else can connect to your MongoDB server from the outside.
-
 ---
 
-## Step 5: Make Encrypted Backups
+## Step 5: Daily Encrypted Backups
 
-You should back up your database regularly — and encrypt the backups in case someone else gains access.
+A secure system always includes regular, **encrypted backups**.
 
-### A. Dump Your Database
-
-```bash
-mongodump --db personal_archive --out /home/yourname/mongodb_backups
-```
-
-This creates a folder of `.bson` and `.json` files — the full dump.
-
-### B. Encrypt the Backup (GPG or OpenSSL)
-
-#### Option 1: GPG
+### A. Create a Backup Script
 
 ```bash
-gpg -c /home/yourname/mongodb_backups/personal_archive.bson
+mkdir -p ~/scripts
+nano ~/scripts/backup_mongo.sh
 ```
 
-This encrypts the file with a password.
-
-#### Option 2: OpenSSL
+Paste this:
 
 ```bash
-openssl enc -aes-256-cbc -salt -in backup.bson -out backup.bson.enc
+#!/bin/bash
+
+DATE=$(date +%Y-%m-%d)
+BACKUP_DIR="/home/yourname/mongodb_backups/$DATE"
+
+mongodump --db personal_archive --out "$BACKUP_DIR"
+
+# Encrypt the backup (GPG)
+gpg -c "$BACKUP_DIR"/personal_archive/*.bson
+rm "$BACKUP_DIR"/personal_archive/*.bson
+
+# Log the result
+echo "Backup completed on $DATE" >> /var/log/mongo_backup.log
 ```
 
-Choose strong encryption and store passwords safely (e.g., password manager or offline).
+Make executable:
+
+```bash
+chmod +x ~/scripts/backup_mongo.sh
+```
+
+### B. Schedule Daily Cron Backup
+
+Edit your crontab:
+
+```bash
+crontab -e
+```
+
+Add:
+
+```cron
+0 2 * * * /home/yourname/scripts/backup_mongo.sh
+```
+
+Backups now run automatically at 2:00 AM.
 
 ---
 
 ## Step 6: Understand Logs and Auditing
 
-MongoDB logs activity to a file — usually:
-
-```
-/var/log/mongodb/mongod.log
-```
-
-You can view it:
+MongoDB logs activity here:
 
 ```bash
 sudo less /var/log/mongodb/mongod.log
 ```
 
-You’ll see events like:
+You can see:
 
-* Connections opened
-* Authentication attempts
-* Commands run (e.g., queries, inserts)
+* Auth attempts
+* User sessions
+* Commands and errors
 
-If needed, you can enable deeper **audit logging**, but that’s more advanced and only used for strict monitoring.
+For deeper auditing, see: [MongoDB Audit Logs](https://www.mongodb.com/docs/manual/tutorial/configure-audit-log/)
 
 ---
 
 ## Summary: What You Learned in Phase 4
 
-✅ Require logins for MongoDB access<br>
-✅ Create admin and read/write users<br>
-✅ Limit access to localhost<br>
-✅ Use `ufw` or `iptables` to block outside traffic<br>
-✅ Make secure, encrypted backups<br>
-✅ Read logs to understand user actions
+✅ Require logins for MongoDB access
+✅ Create admin and read/write users
+✅ Limit access to localhost only
+✅ Use `ufw` or `iptables` to block outside traffic
+✅ Automate encrypted daily backups
+✅ Read logs to monitor activity
 
-With these protections, your MongoDB database is now suitable for **private, daily use** — safe from unauthorized access, even on a shared network.
+You now have a MongoDB system that is safe, encrypted, and backed up — suitable for private use on a personal or shared machine.
 
 ---
 
 ## Next Step
 
-🚀 [Phase 5](https://github.com/tims-computer-academy/mongodb/blob/main/phase5.md)
+🚀 [Phase 5 → Remote Access and Self-Hosting](https://github.com/tims-computer-academy/mongodb/blob/main/phase5.md)
