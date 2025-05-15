@@ -7,9 +7,8 @@
 * Stay fully open source (no paid services)
 * Prioritize **information security**
 
-**Requirements**
-* Debian-based Linux
-* `apt` (package manager) for installation
+**Environment**
+* Linux
 
 ---
 
