@@ -240,4 +240,4 @@ You now have a MongoDB system that is safe, encrypted, and backed up — suitabl
 
 ## Next Step
 
-🚀 [Phase 5 → Remote Access and Self-Hosting](https://github.com/tims-computer-academy/mongodb/blob/main/phase5.md)
+🚀 [Phase 5: Remote access and self-hosting](https://github.com/tims-computer-academy/mongodb/blob/main/phase5.md)
