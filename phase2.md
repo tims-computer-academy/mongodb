@@ -267,4 +267,4 @@ This skillset is essential for working with **structured information** in MongoD
 
 ## Next Step
 
-🚀 [Phase 3](https://github.com/tims-computer-academy/mongodb/blob/main/phase3.md)
+🚀 [Phase 3: GUI tools & visual data management](https://github.com/tims-computer-academy/mongodb/blob/main/phase3.md)
