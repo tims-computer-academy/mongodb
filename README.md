@@ -8,7 +8,7 @@
 * Prioritize **information security**
 
 **Environment**
-* Linux
+* Ubuntu Linux
 
 ---
 
